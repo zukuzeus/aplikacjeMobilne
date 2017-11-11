@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="aplikacjemobilnezukowskistage1@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.4">
+    <root id="1"/>
+    <database id="2" parent="1" name="aplikacjemobilnezukowskistage1">
+      <ObjectId>24576</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12938</ObjectId>
+    </database>
+    <database id="4" parent="1" name="test">
+      <ObjectId>16393</ObjectId>
+    </database>
+    <schema id="5" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-11-11.10:55:18.363</IntrospectionTimestamp>
+      <IntrospectionStateNumber>580</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="6" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="9" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="information_schema">
+      <ObjectId>12648</ObjectId>
+    </schema>
+    <table id="11" parent="5" name="products">
+      <ObjectId>24590</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <table id="12" parent="5" name="users">
+      <ObjectId>24577</ObjectId>
+      <StateNumber>580</StateNumber>
+    </table>
+    <column id="13" parent="11" name="username">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="14" parent="11" name="product">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="15" parent="11" name="store">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="16" parent="11" name="price">
+      <Position>4</Position>
+      <DataType>real|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <column id="17" parent="11" name="quantity">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>580</StateNumber>
+    </column>
+    <index id="18" parent="11" name="products_pkey">
+      <ObjectId>24593</ObjectId>
+      <ColNames>username
+product</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="11" name="products_pkey">
+      <ObjectId>24594</ObjectId>
+      <ColNames>username
+product</ColNames>
+      <UnderlyingIndexName>products_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="20" parent="11" name="products_username_fkey">
+      <ObjectId>24595</ObjectId>
+      <ColNames>username</ColNames>
+      <RefTableId>24577</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="21" parent="12" name="username">
+      <Position>1</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>568</StateNumber>
+    </column>
+    <column id="22" parent="12" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>568</StateNumber>
+    </column>
+    <index id="23" parent="12" name="users_pkey">
+      <ObjectId>24580</ObjectId>
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="24" parent="12" name="users_pkey">
+      <ObjectId>24581</ObjectId>
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
