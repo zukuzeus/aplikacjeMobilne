@@ -10,18 +10,8 @@ public class Main {
     public static void main(String[] args) {
 
         port(8080);
-
-        // webSocket("/echo", EchoWebSocket.class);
-        // get("/echo", (req, res) -> "Hello World - omlet pedzio");
-        get("/echo", (req, res) -> "sdf");
         init();
 
-        // ProductService products = null;
-        // products = CRUD.QUERY.getResultsAsProductService("daniel");
-
-        // Gson gson = new Gson();
-        // gson.toJson(products);
-        // products.updateProductQuantity("baton1", 5);
         get("/hello", (request, response) -> "helol");
         post("/login", (req, res) -> CRUD.QUERY.isUserExistsAndPasswordMatch(
                 req.queryParams("username"),
@@ -61,8 +51,5 @@ public class Main {
                 return false;
 
         });
-
-        //
-        // stop();
     }
 }

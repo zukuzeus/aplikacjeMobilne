@@ -27,8 +27,8 @@ public final class DatabaseConnection {
 				e.printStackTrace();
 				return null;
 			}
-			System.out.println("sukces ³¹czenia z baz¹ danych");
-			return connection;
+            System.out.println("sukces Å‚Ä…czenia z bazÄ… danych");
+            return connection;
 		} else
 			return null;
 	}
