@@ -1,13 +1,13 @@
 package database.util;
 
+import database.containers.Product;
+import database.containers.ProductService;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-
-import database.containers.Product;
-import database.containers.ProductService;
 
 public class Query extends CrudTemplate {
     // private static Statement statement;
@@ -86,7 +86,7 @@ public class Query extends CrudTemplate {
 
     public ProductService getResultsAsProductService(String username) {
         createStatement();
-        String sql = "SELECT * from products where username=" + addEarsToString(username) ;
+        String sql = "SELECT * from products where username=" + addEarsToString(username) + "ORDER BY product";
         ProductService products = new ProductService();
 
         try {
