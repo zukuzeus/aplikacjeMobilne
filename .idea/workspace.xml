@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9d877e5-5ee0-4119-aa56-dcbfa96cad0b" name="Default" comment="dodanie bazy danych do intelij">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata.keystream" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata.keystream.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata_i" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata_i.len" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195/_metadata_/metadata_i.len" />
+    <list default="true" id="e9d877e5-5ee0-4119-aa56-dcbfa96cad0b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database/util/Delete.class" afterPath="$PROJECT_DIR$/target/classes/database/util/Delete.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database/util/Insert.class" afterPath="$PROJECT_DIR$/target/classes/database/util/Insert.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database/util/Query.class" afterPath="$PROJECT_DIR$/target/classes/database/util/Query.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database/util/Update.class" afterPath="$PROJECT_DIR$/target/classes/database/util/Update.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/server/Main.class" afterPath="$PROJECT_DIR$/target/classes/server/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/def62908-f660-4286-b4b3-cf33305fd195.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/util/Delete.java" afterPath="$PROJECT_DIR$/src/main/java/database/util/Delete.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/util/Insert.java" afterPath="$PROJECT_DIR$/src/main/java/database/util/Insert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/util/Query.java" afterPath="$PROJECT_DIR$/src/main/java/database/util/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/database/util/Update.java" afterPath="$PROJECT_DIR$/src/main/java/database/util/Update.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/server/Main.java" afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/server/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="124">
-              <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+              <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -77,10 +65,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/database/util/Insert.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
-              <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+              <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
               <folding>
-                <marker date="1510410459568" expanded="true" signature="491:582" ph="Insert into users... " />
-                <marker date="1510410459568" expanded="true" signature="1025:1198" ph="insert into products... " />
+                <marker date="1510491989449" expanded="true" signature="381:472" ph="Insert into users... " />
+                <marker date="1510491989449" expanded="true" signature="915:1088" ph="insert into products... " />
               </folding>
             </state>
           </provider>
@@ -124,6 +112,11 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="zukuzeus &lt;danielzukowskii@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -353,12 +346,20 @@
       <workItem from="1510393703607" duration="21000" />
       <workItem from="1510393838331" duration="9536000" />
       <workItem from="1510484517595" duration="1498000" />
-      <workItem from="1510491910158" duration="43000" />
+      <workItem from="1510491910158" duration="120000" />
     </task>
+    <task id="LOCAL-00001" summary="przed ostatnimi poprawkami">
+      <created>1510491998121</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1510491998121</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23014000" />
+    <option name="totallyTimeSpent" value="23091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -445,7 +446,11 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="przed ostatnimi poprawkami" />
+    <option name="LAST_COMMIT_MESSAGE" value="przed ostatnimi poprawkami" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -465,8 +470,8 @@
         <state relative-caret-position="595">
           <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
           <folding>
-            <marker date="1510410459568" expanded="true" signature="491:582" ph="Insert into users... " />
-            <marker date="1510410459568" expanded="true" signature="1025:1198" ph="insert into products... " />
+            <marker date="1510491989449" expanded="true" signature="381:472" ph="Insert into users... " />
+            <marker date="1510491989449" expanded="true" signature="915:1088" ph="insert into products... " />
           </folding>
         </state>
       </provider>
@@ -513,8 +518,8 @@
         <state relative-caret-position="697">
           <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
           <folding>
-            <marker date="1510410459568" expanded="true" signature="491:582" ph="Insert into users... " />
-            <marker date="1510410459568" expanded="true" signature="1025:1198" ph="insert into products... " />
+            <marker date="1510491989449" expanded="true" signature="381:472" ph="Insert into users... " />
+            <marker date="1510491989449" expanded="true" signature="915:1088" ph="insert into products... " />
           </folding>
         </state>
       </provider>
@@ -579,6 +584,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
           <caret line="142" column="22" lean-forward="false" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -613,6 +619,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
           <caret line="142" column="22" lean-forward="false" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -628,6 +635,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="81" column="31" lean-forward="true" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -643,6 +651,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1445">
           <caret line="90" column="27" lean-forward="true" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -658,6 +667,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
           <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -717,6 +727,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="41" lean-forward="true" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding>
+            <marker date="1510410459537" expanded="true" signature="321:448" ph="update produ... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -731,16 +744,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
           <caret line="88" column="107" lean-forward="false" selection-start-line="88" selection-start-column="107" selection-end-line="88" selection-end-column="107" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/util/Insert.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
-          <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+          <caret line="35" column="55" lean-forward="false" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
           <folding>
-            <marker date="1510410459568" expanded="true" signature="491:582" ph="Insert into users... " />
-            <marker date="1510410459568" expanded="true" signature="1025:1198" ph="insert into products... " />
+            <marker date="1510491989449" expanded="true" signature="381:472" ph="Insert into users... " />
+            <marker date="1510491989449" expanded="true" signature="915:1088" ph="insert into products... " />
           </folding>
         </state>
       </provider>
@@ -788,10 +802,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/database/util/Insert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
-          <caret line="38" column="37" lean-forward="false" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding />
         </state>
       </provider>
