@@ -15,16 +15,16 @@ public class Insert extends CrudTemplate {
 
         try {
             statement.executeUpdate(sql);
-
+            return true;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-
+            System.out.println("user already exists, cant register");
             return false;
         } finally {
             closeStatement();
         }
-        return true;
+
     }
 
     public boolean insertProduct(String user, String product, String sklep, double cena, int ilosc) {
@@ -36,7 +36,7 @@ public class Insert extends CrudTemplate {
             statement.executeUpdate(sql);
             return true;
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            System.out.println("product already exists, cant insert product");
             e.printStackTrace();
             return false;
         } finally {
