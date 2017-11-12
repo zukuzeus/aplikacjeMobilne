@@ -3,9 +3,6 @@ package database.util;
 import java.sql.SQLException;
 
 public class Insert extends CrudTemplate {
-    // private static Statement statement;
-    // private static Connection connection =
-    // DatabaseConnection.getDataBaseConnection();
 
     public Insert() {
 

@@ -3,7 +3,6 @@ package database.util;
 import java.sql.SQLException;
 
 public class Delete extends CrudTemplate {
-    //private static Statement statement;
 
     public Delete() {
     }

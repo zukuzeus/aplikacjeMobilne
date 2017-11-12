@@ -12,7 +12,6 @@ public class Main {
         port(8080);
         init();
 
-        get("/hello", (request, response) -> "helol");
         post("/login", (req, res) -> CRUD.QUERY.isUserExistsAndPasswordMatch(
                 req.queryParams("username"),
                 req.queryParams("password")));
@@ -20,7 +19,7 @@ public class Main {
         post("/results", (req, res) -> CRUD.QUERY.getResultsAsProductService(
                 req.queryParams("username")).getAllProducts(),
                 JsonUtil.json());
-        //
+
         post("/delete", (req, res) -> CRUD.DELETE.deleteProduct(
                 req.queryParams("username"),
                 req.queryParams("product")),

@@ -10,9 +10,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 public class Query extends CrudTemplate {
-    // private static Statement statement;
-    // private static Connection connection =
-    // DatabaseConnection.getDataBaseConnection();
     private static ResultSet results;
 
     public Query() {
@@ -42,6 +39,16 @@ public class Query extends CrudTemplate {
 
     }
 
+    public void displayResultSet() {
+        createStatement();
+        try {
+            prepareResultDisplay();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private void prepareResultDisplay(ResultSet resultSet) throws SQLException {
         ResultSetMetaData rsmd = results.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
@@ -55,17 +62,6 @@ public class Query extends CrudTemplate {
             System.out.println("");
         }
         System.out.println("");
-    }
-
-    public void displayResultSet() {
-        createStatement();
-        try {
-            prepareResultDisplay();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
     }
 
     private void prepareResultDisplay() throws SQLException {
@@ -114,7 +110,7 @@ public class Query extends CrudTemplate {
         try {
             //!results.isBeforeFirst()
             if (results.next() == false) {
-                System.out.println("No data");
+                System.out.println("No such user exists");
                 return false;
             } else
                 return true;
@@ -128,7 +124,7 @@ public class Query extends CrudTemplate {
 
     }
 
-    private double dfRound( double d) {
+    private double dfRound(double d) {
         NumberFormat df = new DecimalFormat(".##");
         double rounded = Double.parseDouble(df.format(d));
         return rounded;
@@ -138,8 +134,6 @@ public class Query extends CrudTemplate {
 
     private double roundToTwoDecimalPlaces(final double d) {
         double rounded = Math.round(d * 100.0) / 100.0;
-
-
         return rounded;
     }
 }
