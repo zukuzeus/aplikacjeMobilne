@@ -2,6 +2,7 @@ package server;
 
 import database.util.CRUD;
 import database.util.JsonUtil;
+import spark.Request;
 
 import static spark.Spark.*;
 
@@ -16,28 +17,30 @@ public class Main {
                 req.queryParams("username"),
                 req.queryParams("password")));
 
-        post("/results", (req, res) -> CRUD.QUERY.getResultsAsProductService(
-                req.queryParams("username")).getAllProducts(),
-                JsonUtil.json());
+        post("/results", (req, res) -> {
+            if (isLoginAndPasswordMatch(req)) {
+                return CRUD.QUERY.getResultsAsProductService(req.queryParams("username")).getAllProducts();
+            } else return false;
 
-        post("/delete", (req, res) -> CRUD.DELETE.deleteProduct(
-                req.queryParams("username"),
-                req.queryParams("product")),
-                JsonUtil.json());
+        }, JsonUtil.json());
 
-        post("/update", (req, res) -> CRUD.UPDATE.updateProductQuantity(
-                req.queryParams("username"),
-                req.queryParams("product"),
-                Integer.parseInt(req.queryParams("quantity"))),
-                JsonUtil.json());
+        post("/delete", (req, res) -> {
+            if (isLoginAndPasswordMatch(req)) {
+                return CRUD.DELETE.deleteProduct(req.queryParams("username"), req.queryParams("product"));
+            } else return false;
+        }, JsonUtil.json());
 
-        post("/add", (req, res) -> CRUD.INSERT.insertProduct(
-                req.queryParams("username"),
-                req.queryParams("product"),
-                req.queryParams("shop"),
-                Double.parseDouble(req.queryParams("price")),
-                0),
-                JsonUtil.json());
+        post("/update", (req, res) -> {
+            if (isLoginAndPasswordMatch(req)) {
+                return CRUD.UPDATE.updateProductQuantity(req.queryParams("username"), req.queryParams("product"), Integer.parseInt(req.queryParams("quantity")));
+            } else return false;
+        }, JsonUtil.json());
+
+        post("/add", (req, res) -> {
+            if (isLoginAndPasswordMatch(req)) {
+                return CRUD.INSERT.insertProduct(req.queryParams("username"), req.queryParams("product"), req.queryParams("shop"), Double.parseDouble(req.queryParams("price")), 0);
+            } else return false;
+        }, JsonUtil.json());
 
         after((req, res) -> {
             res.type("application/json");
@@ -50,5 +53,13 @@ public class Main {
                 return false;
 
         });
+    }
+
+    public static boolean isLoginAndPasswordMatch(Request req) {
+        boolean isLogged = CRUD.QUERY.isUserExistsAndPasswordMatch(req.queryParams("username"), req.queryParams("password"));
+        if (isLogged) {
+            return true;
+        } else return false;
+
     }
 }
