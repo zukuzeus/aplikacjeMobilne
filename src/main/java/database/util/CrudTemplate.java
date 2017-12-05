@@ -28,8 +28,8 @@ public abstract class CrudTemplate {
 			try {
 				this.statement.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+                System.out.println("statement close error");
+                e.printStackTrace();
 			}
 		}
 	}

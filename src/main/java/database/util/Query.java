@@ -103,22 +103,21 @@ public class Query extends CrudTemplate {
     }
 
     public boolean isUserExistsAndPasswordMatch(String username, String password) {
-        //createStatement();
-        String sql = "select * from users where username=" + addEarsToString(username) + " and password ="
+        createStatement();
+        String sql = "SELECT * FROM users where username=" + addEarsToString(username) + " and password ="
                 + addEarsToString(password);
         getResultsFromSql(sql);
         try {
             //!results.isBeforeFirst()
             if (results.next() == false) {
-                System.out.println("No such user exists");
+                System.out.println("Login failed when user: " + username + "    ||tried to log");
                 return false;
             } else
                 return true;
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
-            closeStatement();
+            //closeStatement();
         }
         return false;
 
