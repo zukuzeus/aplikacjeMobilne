@@ -12,11 +12,11 @@ import java.text.NumberFormat;
 public class Query extends CrudTemplate {
     private static ResultSet results;
 
-    public Query() {
+    Query() {
 
     }
 
-    public ResultSet getResultsFromSql(String SqlQuery) {
+    private ResultSet getResultsFromSql(String SqlQuery) {
         createStatement();
         try {
             results = statement.executeQuery(SqlQuery);
@@ -102,6 +102,22 @@ public class Query extends CrudTemplate {
         return products;
     }
 
+    public boolean ifProductExistsInDataBase(final String product, final String username) {
+        createStatement();
+        String sql = "SELECT * FROM products where username=" + addEarsToString(username) + " and product ="
+                + addEarsToString(product);
+        getResultsFromSql(sql);
+        try {
+            //!results.isBeforeFirst()
+            return results.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            //closeStatement();
+        }
+        return false;
+    }
+
     public boolean isUserExistsAndPasswordMatch(String username, String password) {
         createStatement();
         String sql = "SELECT * FROM users where username=" + addEarsToString(username) + " and password ="
@@ -109,7 +125,7 @@ public class Query extends CrudTemplate {
         getResultsFromSql(sql);
         try {
             //!results.isBeforeFirst()
-            if (results.next() == false) {
+            if (!results.next()) {
                 System.out.println("Login failed when user: " + username + "    ||tried to log");
                 return false;
             } else
@@ -125,14 +141,12 @@ public class Query extends CrudTemplate {
 
     private double dfRound(double d) {
         NumberFormat df = new DecimalFormat(".##");
-        double rounded = Double.parseDouble(df.format(d));
-        return rounded;
+        return Double.parseDouble(df.format(d));
 
 
     }
 
     private double roundToTwoDecimalPlaces(final double d) {
-        double rounded = Math.round(d * 100.0) / 100.0;
-        return rounded;
+        return Math.round(d * 100.0) / 100.0;
     }
 }

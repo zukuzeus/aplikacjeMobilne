@@ -4,45 +4,56 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class CrudTemplate {
-	protected static Connection connection = DatabaseConnection.getDataBaseConnection();
-	protected Statement statement;
-	protected final static String COMMA = ", ";
+abstract class CrudTemplate {
+    final static String COMMA = ", ";
+    private static Connection connection = DatabaseConnection.getDataBaseConnection();
+    Statement statement;
 
-	protected static String addEarsToString(String string) {
-		String dbString = "'" + string + "'";
-		return dbString;
-	}
+    static String addEarsToString(String string) {
+        return "'" + string + "'";
+    }
 
-	public void createStatement() {
-		try {
-			this.statement = connection.createStatement();
-		} catch (SQLException e) {
-			System.out.println("statement creation error");
-			e.printStackTrace();
-		}
-	}
+    void createStatement() {
+        try {
+            this.statement = connection.createStatement();
+        } catch (SQLException e) {
+            System.out.println("statement creation error");
+            e.printStackTrace();
+        }
+    }
 
-	public void closeStatement() {
-		if (this.statement != null) {
-			try {
-				this.statement.close();
-			} catch (SQLException e) {
+    void closeStatement() {
+        if (this.statement != null) {
+            try {
+                this.statement.close();
+            } catch (SQLException e) {
                 System.out.println("statement close error");
                 e.printStackTrace();
-			}
-		}
-	}
+            }
+        }
+    }
 
-	public void closeConnection() {
-		if (connection != null) {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+    void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 
+    boolean isExecuted(String sql) {
+        createStatement();
+        try {
+            statement.execute(sql);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeStatement();
+        }
+    }
 }

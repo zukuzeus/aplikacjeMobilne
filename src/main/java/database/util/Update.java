@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class Update extends CrudTemplate {
 
 
-    public Update() {
+    Update() {
     }
 
     public boolean updateProductQuantity(String username, String produkt, Integer newQuantity) {
@@ -26,15 +26,21 @@ public class Update extends CrudTemplate {
 
     }
 
-    public boolean updateProductQuantityInDevicesTable(String username, String produkt, Integer id, Integer newQuantity) {
+    public boolean updateProductQuantityInDevicesTable() {
         createStatement();
-        String sql = "update quantytiesperdevice set quantity = " + newQuantity.intValue() + " where product= " + addEarsToString(produkt) + " and "
-                + "username= " + addEarsToString(username) + " and " + "deviceid= " + id.intValue();
+        String sql = "UPDATE products p\n" +
+                "SET quantity = f.valsum\n" +
+                "FROM\n" +
+                "(\n" +
+                "SELECT username, product, SUM(quantytiesperdevice.quantity) valsum\n" +
+                "FROM quantytiesperdevice\n" +
+                "GROUP BY  username, product\n" +
+                ") f\n" +
+                "WHERE p.username = f.username AND p.product = f.product";
         try {
             statement.executeUpdate(sql);
             return true;
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return false;
         } finally {

@@ -1,28 +1,30 @@
 package database.util;
 
-import java.sql.SQLException;
-
 public class Delete extends CrudTemplate {
 
-    public Delete() {
+    Delete() {
     }
 
     public boolean deleteProduct(String username, String product) {
-        createStatement();
         String sql = "DELETE from products where username=" + addEarsToString(username) + " and product="
                 + addEarsToString(product);
-        try {
-            statement.execute(sql);
-            return true;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return false;
-        } finally {
-            closeStatement();
-        }
+        return isExecuted(sql);
+    }
+
+    public boolean deleteProductsQtyFrom_quantytiesperdevice(String username, int deviceId) {
+        String sqlDropForId = "DELETE FROM quantytiesperdevice WHERE username=" + addEarsToString(username) + " AND deviceid=" + deviceId;
+        return isExecuted(sqlDropForId);
+    }
 
 
+    public boolean deleteProductsFromProductsWhenProductNotExistForSuchUserInQty() {
+        String sqlCleanProducts = "DELETE FROM products p\n" +
+                "WHERE NOT EXISTS (\n" +
+                "    SELECT 1\n" +
+                "    FROM   quantytiesperdevice qty\n" +
+                "    WHERE  qty.username = p.username and qty.product=p.product\n" +
+                ")";
+        return isExecuted(sqlCleanProducts);
     }
 
 }

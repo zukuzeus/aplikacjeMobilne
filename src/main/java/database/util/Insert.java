@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class Insert extends CrudTemplate {
     private static ResultSet results;
 
-    public Insert() {
+    Insert() {
 
     }
 
@@ -47,18 +47,18 @@ public class Insert extends CrudTemplate {
 
     }
 
-    public boolean insertProductQtyToUserTable(String user, String product, int devceId, int iloscNaDevice) {
+    public boolean insertProductQtyToUserTable(String user, String product, int deviceId, int iloscNaDevice) {
         createStatement();
 
-        String sql = "insert into quantytiesperdevice VALUES(" + addEarsToString(user) + COMMA + addEarsToString(product) + COMMA
-                + devceId + COMMA + iloscNaDevice + ")";
+
+        String sqlUpsert = "INSERT INTO quantytiesperdevice VALUES(" + addEarsToString(user) + COMMA + addEarsToString(product) + COMMA
+                + deviceId + COMMA + iloscNaDevice + ")" + " ON CONFLICT (username,product,deviceid) DO UPDATE SET quantity =" + iloscNaDevice;
         try {
-            statement.executeUpdate(sql);
+            statement.executeUpdate(sqlUpsert);
             return true;
         } catch (SQLException e) {
-            System.out.println("product already exists, cant insert product");
+            System.out.println("error in UPSERT postgres");
             e.printStackTrace();
-
             return false;
         } finally {
             closeStatement();
@@ -91,9 +91,8 @@ public class Insert extends CrudTemplate {
         } finally {
             closeStatement();
         }
-        return newIdForDevice.intValue();
+        return newIdForDevice;
     }
-
 
 
 }

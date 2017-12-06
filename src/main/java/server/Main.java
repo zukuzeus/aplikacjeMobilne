@@ -30,6 +30,7 @@ public class Main {
                     req.queryParams("username"),
                     req.queryParams("password"));
         });
+
         post("/getId", (req, res) -> {
             if (isLoginAndPasswordMatch(req)) {
                 int devId = -1;
@@ -70,12 +71,28 @@ public class Main {
 //new
         post("/synchronize", (req, res) -> {
 
-            getInfoFromJsonAboutDeviceDB(req.body()).stream().map(Product::toString).forEach(s -> System.out.println(s));
+            String username = getUserFromBody(req);
+            int deviceId = getDeviceIdBody(req);
+
+            CRUD.DELETE.deleteProductsQtyFrom_quantytiesperdevice(username, deviceId);
+
+            getProductListFromJsonFromDeviceDB(req.body()).forEach(product -> {
+                if (CRUD.QUERY.ifProductExistsInDataBase(product.getProductName(), username)) {
+                    System.out.println("istnieje");
+                    CRUD.INSERT.insertProductQtyToUserTable(username, product.getProductName(), deviceId, product.getQuantity());
+                } else {
+                    System.out.println("nie istnieje");
+                    CRUD.INSERT.insertProduct(username, product.getProductName(), product.getShop(), product.getPrize(), product.getQuantity());
+                    CRUD.INSERT.insertProductQtyToUserTable(username, product.getProductName(), deviceId, product.getQuantity());
+                }
+            });
+            CRUD.UPDATE.updateProductQuantityInDevicesTable();
+            CRUD.DELETE.deleteProductsFromProductsWhenProductNotExistForSuchUserInQty();
 
             System.out.println(req.body().toString());
             boolean a = isLoginAndPasswordMatchHEADER(req);
             if (a) {
-                CRUD.INSERT.insertProductQtyToUserTable("S", "pomarancz", 1, 2);
+//                CRUD.INSERT.insertProductQtyToUserTable("S", "pomarancz", 1, 2);
                 System.out.println("udało sie autentykacja");
                 return true;
             } else return "not autenticated";
@@ -95,7 +112,7 @@ public class Main {
                 return false;
 
         });
-        CRUD.UPDATE.updateProductQuantityInDevicesTable("a", "a", 1, 1);
+//        CRUD.UPDATE.updateProductQuantityInDevicesTable("a", "a", 1, 1);
     }
 
     public static boolean isLoginAndPasswordMatch(Request req) {
@@ -108,6 +125,7 @@ public class Main {
 
     public static boolean isLoginAndPasswordMatchHEADER(Request req) { //TODO -> mozna zrobic ze haslo i uzytkownik w headerze
         String autorisation = req.headers("Authorization").toString();
+        autorisation = autorisation.substring("Basic ".length());
         System.out.println(autorisation);
         byte[] base64String = new byte[0];
         try {
@@ -119,10 +137,20 @@ public class Main {
         String user = userandpassword.substring(0, userandpassword.lastIndexOf(":"));
         String password = userandpassword.substring(userandpassword.lastIndexOf(":") + 1);
         boolean isLogged = CRUD.QUERY.isUserExistsAndPasswordMatch(user, password);
-        if (isLogged) {
-            return true;
-        } else return false;
+        return isLogged;
 
+    }
+
+    public static String getUserFromBody(Request req) {
+        JsonParser jsonParser = new JsonParser();
+        JsonElement element = jsonParser.parse(req.body());
+        return element.getAsJsonObject().get("username").getAsString();
+    }
+
+    public static int getDeviceIdBody(Request req) {
+        JsonParser jsonParser = new JsonParser();
+        JsonElement element = jsonParser.parse(req.body());
+        return element.getAsJsonObject().get("id").getAsInt();
     }
 
 //    public static void getInfoFromJson(String json) { // wersja jak ejst substate product
@@ -144,7 +172,7 @@ public class Main {
 //
 //    }
 
-    public static List<Product> getInfoFromJsonAboutDeviceDB(String json) {
+    public static List<Product> getProductListFromJsonFromDeviceDB(String json) {
         List<Product> list = new ArrayList<>();
 
         JsonParser jsonParser = new JsonParser();
@@ -153,8 +181,8 @@ public class Main {
         for (int i = 0; i < lista.size(); i++) {
             JsonObject obiektWliscie = lista.get(i).getAsJsonObject();
             list.add(new Product(
-                    obiektWliscie.get("productName").toString(),
-                    obiektWliscie.get("store").toString(),
+                    obiektWliscie.get("productName").getAsString(),
+                    obiektWliscie.get("store").getAsString(),
                     obiektWliscie.get("price").getAsDouble(),
                     obiektWliscie.get("quantity").getAsInt()));
         }
