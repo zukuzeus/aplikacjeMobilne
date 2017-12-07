@@ -19,8 +19,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product{" +
-				"product='" + product + '\'' +
+        return "{" +
+                "product='" + product + '\'' +
 				", store='" + store + '\'' +
 				", prize=" + prize +
 				", quantity=" + quantity +
@@ -43,8 +43,8 @@ public class Product {
 		this.store = shop;
 	}
 
-	public double getPrize() {
-		return prize;
+    public double getPrice() {
+        return prize;
 	}
 
 	public void setPrize(double prize) {

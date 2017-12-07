@@ -24,7 +24,6 @@ public class Query extends CrudTemplate {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         return results;
     }
 
@@ -139,11 +138,48 @@ public class Query extends CrudTemplate {
 
     }
 
+    public ProductService getOtherUsersProducts(String username, int userId) {
+        String sqlOtherDevicesSum = "SELECT\n" +
+                "  n1.product,\n" +
+                "  n1.store,\n" +
+                "  n1.price,\n" +
+                "  n2.otherDeviceQuantity\n" +
+                "FROM (SELECT\n" +
+                "        products.username,\n" +
+                "        products.product,\n" +
+                "        products.store,\n" +
+                "        products.price\n" +
+                "      FROM products) n1\n" +
+                "  INNER JOIN (SELECT\n" +
+                "                quantytiesperdevice.username,\n" +
+                "                quantytiesperdevice.product,\n" +
+                "                SUM(quantytiesperdevice.quantity) otherDeviceQuantity\n" +
+                "              FROM quantytiesperdevice\n" +
+                "              WHERE quantytiesperdevice.deviceid != " + userId + "\n" +
+                "              GROUP BY username, product) n2\n" +
+                "    ON (n2.username = n1.username AND n2.product = n1.product)\n" +
+                "WHERE n1.username = " + addEarsToString(username) + ";";
+        createStatement();
+        results = getResultsFromSql(sqlOtherDevicesSum);
+        ProductService products = new ProductService();
+        try {
+            while (results.next()) {
+                products.addProduct(new Product(
+                        results.getString("product"),
+                        results.getString("store"),
+                        roundToTwoDecimalPlaces(results.getDouble("price")),
+                        results.getInt("otherDeviceQuantity")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return products;
+    }
+
     private double dfRound(double d) {
         NumberFormat df = new DecimalFormat(".##");
         return Double.parseDouble(df.format(d));
-
-
     }
 
     private double roundToTwoDecimalPlaces(final double d) {

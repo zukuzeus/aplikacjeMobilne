@@ -68,7 +68,7 @@ public class Main {
                 return CRUD.INSERT.insertProduct(req.queryParams("username"), req.queryParams("product"), req.queryParams("shop"), Double.parseDouble(req.queryParams("price")), 0);
             } else return "not autenticated";
         }, JsonUtil.json());
-//new
+
         post("/synchronize", (req, res) -> {
 
             String username = getUserFromBody(req);
@@ -82,7 +82,7 @@ public class Main {
                     CRUD.INSERT.insertProductQtyToUserTable(username, product.getProductName(), deviceId, product.getQuantity());
                 } else {
                     System.out.println("nie istnieje");
-                    CRUD.INSERT.insertProduct(username, product.getProductName(), product.getShop(), product.getPrize(), product.getQuantity());
+                    CRUD.INSERT.insertProduct(username, product.getProductName(), product.getShop(), product.getPrice(), product.getQuantity());
                     CRUD.INSERT.insertProductQtyToUserTable(username, product.getProductName(), deviceId, product.getQuantity());
                 }
             });
@@ -90,14 +90,13 @@ public class Main {
             CRUD.DELETE.deleteProductsFromProductsWhenProductNotExistForSuchUserInQty();
 
             System.out.println(req.body().toString());
+
+
             boolean a = isLoginAndPasswordMatchHEADER(req);
             if (a) {
-//                CRUD.INSERT.insertProductQtyToUserTable("S", "pomarancz", 1, 2);
                 System.out.println("udało sie autentykacja");
-                return true;
+                return CRUD.QUERY.getOtherUsersProducts(username, deviceId).getProductListAsJSON();
             } else return "not autenticated";
-
-
         }, JsonUtil.json());
 
 
@@ -112,7 +111,6 @@ public class Main {
                 return false;
 
         });
-//        CRUD.UPDATE.updateProductQuantityInDevicesTable("a", "a", 1, 1);
     }
 
     public static boolean isLoginAndPasswordMatch(Request req) {
@@ -153,25 +151,6 @@ public class Main {
         return element.getAsJsonObject().get("id").getAsInt();
     }
 
-//    public static void getInfoFromJson(String json) { // wersja jak ejst substate product
-//        List<String> list = new ArrayList<>();
-//
-//        JsonParser jsonParser = new JsonParser();
-//        JsonElement element = jsonParser.parse(json);
-//        JsonArray lista = element.getAsJsonObject().get("stanBazy").getAsJsonArray();
-//        for (int i = 0; i < lista.size(); i++) {
-//            JsonObject obiektWliscie = lista.get(i).getAsJsonObject();
-//            obiektWliscie.get("productName");
-//            obiektWliscie.get("store");
-//            obiektWliscie.get("price");
-//            obiektWliscie.get("quantity");
-//            JsonObject ilosciNaUrzadzeniu = obiektWliscie.get("subStatesOfProduct").getAsJsonObject();
-//            ilosciNaUrzadzeniu.get("quantityLocaly").getAsInt();
-//            ilosciNaUrzadzeniu.get("secondDeviceQuantity").getAsInt();
-//        }
-//
-//    }
-
     public static List<Product> getProductListFromJsonFromDeviceDB(String json) {
         List<Product> list = new ArrayList<>();
 
@@ -188,4 +167,5 @@ public class Main {
         }
         return list;
     }
+
 }
